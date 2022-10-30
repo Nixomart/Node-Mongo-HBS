@@ -19,7 +19,6 @@ app.set("views", path.join(__dirname, "/views"));
 
 
 app.use(appRouter);
-
 console.log(path.join(__dirname, "/views"))
 
 export default app;
