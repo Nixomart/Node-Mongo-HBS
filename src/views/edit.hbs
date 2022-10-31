@@ -1,0 +1,13 @@
+<h1>Editing</h1>
+<form action="/edit/{{task._id}}" method="POST">
+  <div>
+    <label for="title">Escribe la tarea</label>
+    <input name="title" placeholder="Tarea..." value="{{task.title}}"/>
+  </div>
+  <div>
+    <label for="description">Escribe la descripcion</label>
+    <input name="description" placeholder="descripcion..." value="{{task.description}}"/>
+    </div>
+
+    <button type="submit">Actualizar</button>
+</form>
