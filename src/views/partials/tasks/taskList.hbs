@@ -11,7 +11,11 @@
         <td>{{title}}</td>
         <td>{{description}}</td>
         <td>
-          <button>Terminada</button>
+            {{#if done}}
+          <a href="/statusChange/{{_id}}">Terminada</a>
+          {{else}}
+          <a href="/statusChange/{{_id}}">No terminada</a>
+          {{/if}}
           <a href="/delete/{{_id}}">Eliminar</a>
           <a href="/edit/{{_id}}">Editar</a>
         </td>
