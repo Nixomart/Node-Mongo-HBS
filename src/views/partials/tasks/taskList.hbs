@@ -1,0 +1,21 @@
+<table>
+    <thead>ID</thead>
+    <thead>Nombre</thead>
+    <thead>Descripcion</thead>
+    <thead>Operaciones</thead>
+    <tbody>
+        <!-- recibimos el array -->
+        {{#each tasksList}}
+        <tr>
+            <td>{{@index}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>
+                <button>Terminada</button>
+                <button>Eliminar</button>
+                <button>Editar</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
