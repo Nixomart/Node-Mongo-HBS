@@ -1,71 +1,24 @@
 import { Router } from "express";
 import Task from "../models/Task";
 const router = Router();
+import { changeStatus, deleteTask, editTask, saveTask, taskEdited, taskList }from '../controllers/task.controller'
+
 
 //muestra de tareas
-router.get("/", async (req, res) => {
-  const tasks = await Task.find().lean();
-  //tasksList sera el array de obj que se enviariá
-  res.render("index", { tasksList: tasks });
-});
+router.get("/", taskList);
 
-//listar tareas
-router.post("/task/add", async (req, res) => {
-  try {
-    const task = Task(req.body);
-
-    await task.save();
-
-    res.redirect("/");
-  } catch (error) {
-    console.log(error);
-  }
-});
+//guardar tarea
+router.post("/task/add", saveTask);
 
 //ruta para ir ala edicion de tarea
-router.get("/edit/:id", async (req, res) => {
-  try {
-    const task = await Task.findById(req.params.id).lean();
-    res.render("edit", { task });
-  } catch (error) {
-    console.log(error.message);
-  }
-});
+router.get("/edit/:id", editTask);
 
 //edicion de tareas
-router.post("/edit/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Task.findByIdAndUpdate(id, req.body);
-    res.redirect("/");
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.post("/edit/:id", taskEdited);
 
 //borrar tarea
-
-router.get("/delete/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Task.findByIdAndDelete(id);
-    res.redirect("/");
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.get("/delete/:id", deleteTask);
 
 //cambiar estado de tarea
-router.get("/statusChange/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const task = await Task.findById(id);
-    task.done = !task.done;
-    await task.save();
-    res.redirect("/");
-
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.get("/changeStatus/:id", changeStatus);
 export default router;
