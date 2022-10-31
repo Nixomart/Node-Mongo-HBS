@@ -1,3 +1,4 @@
+//propiedades de mongo db, como mysql
 import { Schema, model } from "mongoose";
 
 const TaskSchema = new Schema(
