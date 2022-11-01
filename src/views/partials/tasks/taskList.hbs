@@ -1,25 +1,45 @@
-<table>
-  <thead>ID</thead>
-  <thead>Nombre</thead>
-  <thead>Descripcion</thead>
-  <thead>Operaciones</thead>
+<div class="flex justify-center mt-6 overflow-x-auto relative">
+<table class="w-2/4 text-sm text-left text-gray-500 dark:text-gray-400">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="py-3 px-6 rounded-l-lg">
+        ID
+      </th>
+      <th scope="col" class="py-3 px-6 rounded-l-lg">
+        Nombre
+      </th>
+      <th scope="col" class="py-3 px-6 rounded-l-lg">
+        Descripcion
+      </th>
+      <th scope="col" class="py-3 px-6 rounded-l-lg">
+        Operaciones
+      </th>
+    </tr>
+  </thead>
   <tbody>
     <!-- recibimos el array -->
     {{#each tasksList}}
-      <tr>
-        <td>{{@index}}</td>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
+      <tr class="bg-white dark:bg-gray-800">
+        <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{@index}}</td>
+        <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{title}}</td>
+        <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{description}}</td>
         <td>
             {{#if done}}
-          <a href="/changeStatus/{{_id}}">Terminada</a>
+          <a href="/changeStatus/{{_id}}">
+          <i class="fa-solid fa-check fa-2x"></i>
+          </a>
           {{else}}
-          <a href="/changeStatus/{{_id}}">No terminada</a>
+          <a href="/changeStatus/{{_id}}"><i class="fa-sharp fa-solid fa-xmark fa-2x"></i></a>
           {{/if}}
-          <a href="/delete/{{_id}}">Eliminar</a>
-          <a href="/edit/{{_id}}">Editar</a>
+          <a href="/delete/{{_id}}">
+          <i class="fa-solid fa-trash fa-2x"></i></a>
+          <a href="/edit/{{_id}}">
+          <i class="fa-solid fa-pen-to-square fa-2x"></i>
+          
+          </a>
         </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+</div>
